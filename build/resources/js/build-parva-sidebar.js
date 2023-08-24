@@ -21,12 +21,21 @@ sections_per_parva = { 1: 236,
 function build_parva_sidebar()
 {
     current_parva = $("#parva-index").data('parva-index');
+    current_section = $("#parva-index").data('section-index');
+
     max_sections = sections_per_parva[current_parva];
     
     var content = "<div class\"list-group\">";
     for(var i = 1; i <= max_sections; i++)
     {
-        content += `<a class="list-group-item" href="/${current_parva}/${i}.html">Section ${i}</a></li>`
+        /* Highlight current section */
+        var active = "";
+        if(i == current_section)
+        {
+            active = "active";
+        }
+
+        content += `<a class="list-group-item ${active}" href="/${current_parva}/${i}.html">Section ${i}</a></li>`
     }
     content += "</div>";
     $("#parva-index").html(content);

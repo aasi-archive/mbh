@@ -1,6 +1,6 @@
 # The Mahabharata (Online)
 
-The English translation of the Mahabharata by K.M. Ganguly hosted by AASI, originally digitized by Gutenberg and Sacred Texts. This site is hosted at [https://mahabharata.github.io/](https://mahabharata.github.io/).
+The English translation of the Mahabharata by K.M. Ganguly hosted by AASI, originally digitized by Gutenberg and Sacred Texts. This site is hosted at [https://mahabharata-online.github.io/](https://mahabharata-online.github.io/).
 
 ## Description
 

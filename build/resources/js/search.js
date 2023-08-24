@@ -12,6 +12,11 @@ server_error = `There was an error while requesting the search server. It may be
 Contact site administrator if you see this message. Alternatively, you can host
 this whole website locally cloning the repo along with the search server.`
 
+spinner_html = `
+<div class="spinner-border text-success" role="status" id="search-spinner">
+    <span class="sr-only">Loading...</span>
+</div>
+`
 /* Get the search server from config */
 $(document).ready( () => {
     $.getJSON("/config.json", (data) => {
@@ -22,6 +27,12 @@ $(document).ready( () => {
 
 function mbh_search(result_selector, query_selector)
 {
+    $(result_selector).empty();
+    /* Add a spinner */
+    $(result_selector).append(spinner_html);
+    /* Disable the search button */
+    $("#search_button").attr('disabled', true);
+
     query = $(query_selector).val();
     global_result_selector = result_selector
     
@@ -35,9 +46,13 @@ function mbh_search(result_selector, query_selector)
         if (xhr.readyState == 4 && xhr.status == 0)
         {
             $(global_result_selector).html(server_error);
+            $("#search-spinner").remove();
+            $("#search_button").attr('disabled', false);
         }
 
         if (xhr.readyState === 4 && xhr.status === 200) {
+            $("#search-spinner").remove();
+            $("#search_button").attr('disabled', false);
             var json = JSON.parse(xhr.responseText);
             if(Object.keys(json).length == 0)
             {
