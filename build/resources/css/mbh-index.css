@@ -1,0 +1,14 @@
+body {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    font-size: 1.25rem;
+    background-color: rgb(255, 249, 240);
+}
+
+.card {
+    transition: transform 0.1s ease;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}

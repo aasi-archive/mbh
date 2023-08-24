@@ -39,3 +39,10 @@ cd ../build
 python -m http.server 8000
 ```
 
+## Missing Sections/Parvas
+
+- Book 7.54
+- Book 7.55
+- Book 7.189
+
+- Book 12.364

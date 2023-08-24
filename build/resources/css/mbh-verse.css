@@ -1,0 +1,27 @@
+@font-face {
+    font-family: Andada;
+    src: url("/resources/Andada.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Andada;
+    font-weight: bold;
+    src: url("/resources/Andada-Bold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: Andada;
+    font-style: italic;
+    src: url("/resources/Andada-Italic.otf") format("opentype");
+}
+
+body {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    background-color: rgb(255, 249, 240);
+}
+
+.mbh-content {
+    font-family: 'Andada', serif;
+    font-size: 2rem;
+}
