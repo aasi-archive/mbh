@@ -11,7 +11,7 @@ parva_titles = {
     10: "The Sleeping Warriors",
     11: "The Wailing Women",
     12: "Peace",
-    13: "Instuctions",
+    13: "Instructions",
     14: "The Horse Sacrifice",
     15: "Hermitage",
     16: "The Curse",
@@ -23,11 +23,11 @@ function create_parva_card(parva_idx)
 {
     content = '<div class="col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch">';
     content += '<div class="card shadow-lg my-3">';
-    content += '<div class="card-header"><h4>Book ' + parva_idx + '</h4><b>' + parva_titles[parva_idx] +  '</b></div>';
+    content += `<div class="card-header"><h4>Book ${parva_idx}</h4><b>${parva_titles[parva_idx]}</b></div>`;
     content += '<div class="card-body mx-auto">'
-    content += '<img src="/resources/images/parva' + parva_idx + '.jpg" width="192px" height="256px"><br></div>'
+    content += `<img src="/resources/images/parva${parva_idx}.jpg" width="192px" height="256px"><br></div>`
     content += '<div class="card-footer">'
-    content += '<a style="float:right" href="/' + parva_idx + '/1.html" class="btn btn-primary"><span class="fa fa-book"></span>&nbsp;Read</a>';
+    content += `<a style="float:right" href="/${parva_idx}/1.html" class="btn btn-primary"><span class="fa fa-book"></span>&nbsp;Read</a>`;
     content += '</div></div></div>'
     return content;               
 }

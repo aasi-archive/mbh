@@ -2,12 +2,53 @@ import os
 import colorama
 import re
 import jinja2
+import json
 
 MBH_TXT_DIR = "./txt/"
 MBH_BUILD_DIR = "./build/"
 
 PARVA_MIN = 1
 PARVA_MAX = 18
+
+sections_per_parva = { 1: 236,
+                       2: 80,
+                       3: 313,
+                       4: 72,
+                       5: 199,
+                       6: 124,
+                       7: 203,
+                       8: 96,
+                       9: 65,
+                       10: 18,
+                       11: 27,
+                       12: 365,
+                       13: 168,
+                       14: 92,
+                       15: 39,
+                       16: 8,
+                       17: 3,
+                       18: 6}
+
+parva_titles = {
+    1: "The Beginning",
+    2: "The Assembly Hall",
+    3: "The Forest",
+    4: "Incognito",
+    5: "Reconciliation",
+    6: "Bhishma",
+    7: "Drona",
+    8: "Karna",
+    9: "Shalya",
+    10: "The Sleeping Warriors",
+    11: "The Wailing Women",
+    12: "Peace",
+    13: "Instructions",
+    14: "The Horse Sacrifice",
+    15: "Hermitage",
+    16: "The Curse",
+    17: "The Great Journey",
+    18: "The Ascent"
+}
 
 # Convert integer to string with n_digits minimum.
 def n2str(n, n_digits):
@@ -76,12 +117,13 @@ def render_MBh_content(parva, section, content):
         next_page = generate_MBh_filename(parva, section + 1, prefix='')
     elif(section == max_sections and parva < PARVA_MAX):
         next_page = generate_MBh_filename(parva + 1, 1, prefix='')
-
+    
     page_info = { "parva": parva, 
                  "section": section, 
                  "section_content": sanitize_to_HTML(content),
                  "next_page_url": next_page,
-                 "previous_page_url": previous_page }
+                 "previous_page_url": previous_page,
+                 "parva_title": parva_titles[parva] }
 
     file_path = generate_MBh_filename(parva, section)
     file_dir = os.path.dirname(file_path)
@@ -108,24 +150,6 @@ files_to_fix = ["maha08.txt",
                 "maha17.txt",
                 "maha18.txt"]
 
-sections_per_parva = { 1: 236,
-                       2: 80,
-                       3: 313,
-                       4: 72,
-                       5: 199,
-                       6: 124,
-                       7: 203,
-                       8: 96,
-                       9: 65,
-                       10: 18,
-                       11: 27,
-                       12: 365,
-                       13: 168,
-                       14: 92,
-                       15: 39,
-                       16: 8,
-                       17: 3,
-                       18: 6}
 
 def read_mbh_txt(file):
     f = open(os.path.join(MBH_TXT_DIR, file))
@@ -169,8 +193,6 @@ if __name__ == "__main__":
         else:
             print(section_numbers)
             print(colorama.Fore.RED + f"Parva: {parva+1}, error while parsing, expected: {sections_per_parva[parva+1]}, got: {len(sections)}!" + colorama.Fore.RESET)
-            #exit(-1)
 
         for i in range(0, len(sections)):
-            #print(f"Rendering {parva+1}:{section_numbers[i]}")
             render_MBh_content(parva+1, section_numbers[i], sections[i])

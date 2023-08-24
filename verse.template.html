@@ -14,6 +14,21 @@
 </head>
 
 <body>
+    <img src="/resources/images/sidebar.png" class="sidebar-button" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#parva_offcanvas" aria-controls="parva_offcanvas">
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="parva_offcanvas" aria-labelledby="parva_offcanvas_label">
+
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="parva_offcanvas_label">{{parva_title}}</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="offcanvas-body shadow-lg" id="parva-index" data-parva-index="{{parva}}">
+        </div>
+
+    </div>
+
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -23,11 +38,11 @@
                             <div class="col-lg-1 col-md-1 col-sm-2">
                                 {%if previous_page_url != '' %}
                                 <a href="/{{previous_page_url}}" style="float:left;" class="btn btn-primary my-2">
-                                {% else %}
-                                <a href="" style="float:left;" class="btn btn-primary my-2 disabled">
-                                {% endif %}
-                                    <span class="fa fa-xl fa-arrow-left"></span>
-                                </a>
+                                    {% else %}
+                                    <a href="" style="float:left;" class="btn btn-primary my-2 disabled">
+                                        {% endif %}
+                                        <span class="fa fa-xl fa-arrow-left"></span>
+                                    </a>
                             </div>
 
                             <div class="col-lg-1 col-md-1 col-sm-2">
@@ -35,19 +50,19 @@
                                     <span class="fa fa-home"></span>
                                 </a>
                             </div>
-                            
+
                             <div class="col-lg-8 col-md-8 col-sm-6">
                                 <h1 style="text-align:center" class="card-title">{{parva}}:{{section}}</h1>
                             </div>
-                            
+
                             <div class="col-2">
                                 {%if next_page_url != '' %}
                                 <a href="/{{next_page_url}}" style="float:right;" class="btn btn-primary my-2">
-                                {% else %}
-                                <a href="/{{next_page_url}}" style="float:right;" class="btn btn-primary my-2 disabled">
-                                {% endif %}
-                                <span class="fa fa-xl fa-arrow-right"></span>
-                                </a>
+                                    {% else %}
+                                    <a href="" style="float:right;" class="btn btn-primary my-2 disabled">
+                                        {% endif %}
+                                        <span class="fa fa-xl fa-arrow-right"></span>
+                                    </a>
                             </div>
                         </div>
                     </div>
@@ -60,8 +75,15 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/resources/js/build-parva-sidebar.js"></script>
 
+    <script>
+        $(document).ready(() => {
+            build_parva_sidebar();
+        })
+    </script>
 </body>
 
 </html>

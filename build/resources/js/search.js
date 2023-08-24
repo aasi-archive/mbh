@@ -8,6 +8,10 @@ query_error_string = `No matches found. Here could be the following reasons:
 </ul>
 `;
 
+server_error = `There was an error while requesting the search server. It may be down. 
+Contact site administrator if you see this message. Alternatively, you can host
+this whole website locally cloning the repo along with the search server.`
+
 /* Get the search server from config */
 $(document).ready( () => {
     $.getJSON("/config.json", (data) => {
@@ -20,11 +24,19 @@ function mbh_search(result_selector, query_selector)
 {
     query = $(query_selector).val();
     global_result_selector = result_selector
+    
     var xhr = new XMLHttpRequest();
-    var url = search_server;
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.onreadystatechange = function () {
+    
+    xhr.onerror = () => {
+        $(global_result_selector).html(server_error);
+    };
+
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState == 4 && xhr.status == 0)
+        {
+            $(global_result_selector).html(server_error);
+        }
+
         if (xhr.readyState === 4 && xhr.status === 200) {
             var json = JSON.parse(xhr.responseText);
             if(Object.keys(json).length == 0)
@@ -48,6 +60,10 @@ function mbh_search(result_selector, query_selector)
             $(global_result_selector).html(result_content)
         }
     };
+
+    var url = search_server;
     var data = JSON.stringify({"text": "MBH", "query": query});
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(data);
 }

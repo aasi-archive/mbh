@@ -25,3 +25,16 @@ body {
     font-family: 'Andada', serif;
     font-size: 2rem;
 }
+
+.sidebar-button 
+{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: rotate(90deg);
+}
+
+.sidebar-button:hover
+{
+    cursor: pointer;
+}
