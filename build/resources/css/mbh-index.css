@@ -1,14 +1,28 @@
-body {
+body 
+{
     padding-top: 3%;
     padding-bottom: 3%;
     font-size: 1.25em;
     background-color: rgb(255, 249, 240);
 }
 
-.card {
+.card 
+{
     transition: transform 0.1s ease;
 }
 
-.card:hover {
+.card:hover 
+{
     transform: scale(1.1);
+}
+
+.small-text 
+{
+    font-size: 0.75em;
+    font-family: 'Verdana';
+}
+
+.book-thumbnail
+{
+    border-radius: 2%;
 }

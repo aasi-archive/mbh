@@ -50,6 +50,8 @@ parva_titles = {
     18: "The Ascent"
 }
 
+footnote_index = {}
+
 # Convert integer to string with n_digits minimum.
 def n2str(n, n_digits):
     str_n = str(n)
@@ -92,11 +94,15 @@ def generate_MBh_filename(parva, section, prefix=MBH_BUILD_DIR):
     return os.path.join(prefix, f"{parva}/{section}.html")
 
 # Output HTML for each section
-def sanitize_to_HTML(content):
+def sanitize_to_HTML(parva, content):
     # Remove leading and trailing spaces and add line breaks
     content = (content.strip(' \n\t')).replace("\n", "<br>")
     # Replace -- with HTML dash
     content = content.replace("--", "&#8212;")
+
+    # Replace the [NUMBER] with footnote
+    replacement = r'footnote: \1'
+    content = re.sub(r'\[(\d+)\]', lambda match: f'<span class="footnote-tooltip" style="color:blue;"><sup><i class="fa fa-info-circle"></i></sup><span class="footnote-tooltip-text">{footnote_index[parva][int(match.group(1))]}</span></span>', content)
     return content
 
 def render_MBh_content(parva, section, content):
@@ -120,7 +126,7 @@ def render_MBh_content(parva, section, content):
     
     page_info = { "parva": parva, 
                  "section": section, 
-                 "section_content": sanitize_to_HTML(content),
+                 "section_content": sanitize_to_HTML(parva, content),
                  "next_page_url": next_page,
                  "previous_page_url": previous_page,
                  "parva_title": parva_titles[parva] }
@@ -132,6 +138,20 @@ def render_MBh_content(parva, section, content):
     with open(file_path, mode="w", encoding="utf-8") as page:
         page.write(page_template.render(page_info))
         page.close()
+
+def build_footnote_index(parva, footnotes):
+    regx = re.compile('^\d+\. ', flags=re.MULTILINE|re.DOTALL)
+    # Remove all white spaces
+    footnotes = footnotes.strip()
+    footnote_split = re.split(regx, footnotes)
+    footnote_split.remove('')
+    footnote_dict = {}
+    i = 1
+    for footnote in footnote_split:
+        footnote_dict[i] = footnote.replace("\n", " ")
+        i += 1
+    
+    footnote_index[parva] = footnote_dict
 
 # Generate file (parva) list
 file_list = ["maha" + n2str(i, 2) + ".txt" for i in range(1, 18+1)]
@@ -188,6 +208,8 @@ if __name__ == "__main__":
             else:
                 sections.append(splitted_content[i])
         
+        build_footnote_index(parva+1, footnotes)
+
         if(len(sections) == sections_per_parva[parva+1]):
             print(colorama.Fore.GREEN + f"Parva: {parva+1}, all sections parsed." + colorama.Fore.RESET)
         else:
@@ -196,3 +218,4 @@ if __name__ == "__main__":
 
         for i in range(0, len(sections)):
             render_MBh_content(parva+1, section_numbers[i], sections[i])
+        
