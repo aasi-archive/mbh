@@ -39,4 +39,17 @@ function build_parva_sidebar()
     }
     content += "</div>";
     $("#parva-index").html(content);
+
+    /* Add event listener for left and right buttons */
+   document.addEventListener('keydown', (e) => {
+        if(e.key == 'ArrowLeft')
+        {
+            window.location.href = $("#previous-parva-btn").attr('href');
+        }
+        else if(e.key == 'ArrowRight')
+        {
+            window.location.href = $("#next-parva-btn").attr('href');
+        }
+    });
 }
+

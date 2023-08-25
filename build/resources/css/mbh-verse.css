@@ -28,13 +28,15 @@ body {
 
 .sidebar-button 
 {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 0;
     transform: rotate(90deg);
+    z-index: 1000;
 }
 
 .sidebar-button:hover
 {
     cursor: pointer;
+    filter: brightness(75%);
 }
