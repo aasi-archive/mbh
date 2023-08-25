@@ -49,7 +49,7 @@ function create_parva_card(parva_idx)
     content += `<img src="/resources/images/parva${parva_idx}.jpg" class="book-thumbnail" width="192px" height="256px"><br></div>`;
     content += `<hr><div class="container h-75 small-text"><p>${parva_summaries[parva_idx]}</p></div>`;
     content += '<div class="card-footer">'
-    content += `<a style="float:right" href="/${parva_idx}/1.html" class="btn btn-primary"><span class="fa fa-book"></span>&nbsp;Read</a>`;
+    content += `<a style="float:right" href="/${parva_idx}/1.html" class="btn btn-warning"><span class="fa fa-book"></span>&nbsp;Read</a>`;
     content += '</div></div></div>'
     return content;               
 }

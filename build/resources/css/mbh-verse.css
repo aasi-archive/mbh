@@ -1,44 +1,68 @@
-@font-face {
-    font-family: Andada;
-    src: url("/resources/Andada.otf") format("opentype");
+@font-face 
+{
+  font-family: Andada;
+  src: url("/resources/Andada.otf") format("opentype");
 }
 
-@font-face {
-    font-family: Andada;
-    font-weight: bold;
-    src: url("/resources/Andada-Bold.otf") format("opentype");
+@font-face 
+{
+  font-family: Andada;
+  font-weight: bold;
+  src: url("/resources/Andada-Bold.otf") format("opentype");
 }
 
-@font-face {
-    font-family: Andada;
-    font-style: italic;
-    src: url("/resources/Andada-Italic.otf") format("opentype");
+@font-face 
+{
+  font-family: Andada;
+  font-style: italic;
+  src: url("/resources/Andada-Italic.otf") format("opentype");
 }
 
-body {
-    padding-top: 3%;
-    padding-bottom: 3%;
-    background-color: rgb(255, 249, 240);
+body 
+{
+  padding-top: 3%;
+  padding-bottom: 3%;
+  background-color: rgb(255, 249, 240);
 }
 
-.mbh-content {
-    font-family: 'Andada', serif;
-    font-size: 2em;
+.mbh-content 
+{
+  font-family: 'Andada', serif;
+  font-size: 1.8em;
+  margin-left: 5%;
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+  .mbh-content 
+  {
+    font-size: 0.8em;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) 
+{
+  .mbh-content 
+  {
+    font-size: 0.3em;
+    margin-left: 0%;
+  }
 }
 
 .sidebar-button 
 {
-    position: fixed;
-    top: 50%;
-    left: 0;
-    transform: rotate(90deg);
-    z-index: 1000;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: rotate(90deg);
+  z-index: 1000;
 }
 
-.sidebar-button:hover
+.sidebar-button:hover 
 {
-    cursor: pointer;
-    filter: brightness(75%);
+  cursor: pointer;
+  filter: brightness(75%);
 }
 
 .footnote-tooltip 
@@ -84,4 +108,10 @@ body {
 {
   visibility: visible;
   opacity: 0.95;
+}
+
+.active {
+  background-color: rgb(255, 193, 7) !important;
+  border-color: rgb(255, 193, 7) !important;
+  color: #000 !important;
 }

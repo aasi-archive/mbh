@@ -3,7 +3,9 @@ import colorama
 import re
 import jinja2
 import json
+import datetime
 
+TIME_NOW = datetime.datetime.utcnow().strftime('%B %d %Y - %H:%M:%S')
 MBH_TXT_DIR = "./txt/"
 MBH_BUILD_DIR = "./build/"
 
@@ -102,7 +104,7 @@ def sanitize_to_HTML(parva, content):
 
     # Replace the [NUMBER] with footnote
     replacement = r'footnote: \1'
-    content = re.sub(r'\[(\d+)\]', lambda match: f'<span class="footnote-tooltip" style="color:blue;"><sup><i class="fa fa-info-circle"></i></sup><span class="footnote-tooltip-text">{footnote_index[parva][int(match.group(1))]}</span></span>', content)
+    content = re.sub(r'\[(\d+)\]', lambda match: f'<span class="footnote-tooltip" style="color:rgb(255,193,7);"><sup><i class="fa fa-info-circle"></i></sup><span class="footnote-tooltip-text">{footnote_index[parva][int(match.group(1))]}</span></span>', content)
     return content
 
 def render_MBh_content(parva, section, content):
@@ -129,7 +131,8 @@ def render_MBh_content(parva, section, content):
                  "section_content": sanitize_to_HTML(parva, content),
                  "next_page_url": next_page,
                  "previous_page_url": previous_page,
-                 "parva_title": parva_titles[parva] }
+                 "parva_title": parva_titles[parva], 
+                 "generation_time": str(TIME_NOW) }
 
     file_path = generate_MBh_filename(parva, section)
     file_dir = os.path.dirname(file_path)
@@ -195,6 +198,7 @@ def read_mbh_txt(file):
     return re.split("SECTION ([IVXLCDM]+)", content), footnotes
 
 if __name__ == "__main__":
+    print("Generation started: ", TIME_NOW)
     for parva in range(0, len(file_list)):
         splitted_content, footnotes = read_mbh_txt(file_list[parva])
 

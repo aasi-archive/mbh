@@ -40,16 +40,16 @@
                         <div class="row">
                             <div class="col-lg-1 col-md-1 col-sm-2">
                                 {%if previous_page_url != '' %}
-                                <a href="/{{previous_page_url}}" id="previous-parva-btn" style="float:left;" class="btn btn-primary my-2">
+                                <a href="/{{previous_page_url}}" id="previous-parva-btn" style="float:left;" class="btn btn-warning my-2">
                                 {% else %}
-                                <a href="/" style="float:left;" id="previous-parva-btn" class="btn btn-primary my-2 disabled">
+                                <a href="/" style="float:left;" id="previous-parva-btn" class="btn btn-warning my-2 disabled">
                                 {% endif %}
                                 <span class="fa fa-xl fa-arrow-left"></span>
                                 </a>
                             </div>
 
                             <div class="col-lg-1 col-md-1 col-sm-2">
-                                <a href="/" style="float:left;" class="btn btn-primary my-2">
+                                <a href="/" style="float:left;" class="btn btn-warning my-2">
                                     <span class="fa fa-home"></span>
                                 </a>
                             </div>
@@ -58,11 +58,11 @@
                                 <h1 style="text-align:center" class="card-title">{{parva}}:{{section}}</h1>
                             </div>
 
-                            <div class="col-2">
+                            <div class="col-lg-2 col-md-2 col-sm-2">
                                 {%if next_page_url != '' %}
-                                <a href="/{{next_page_url}}" id="next-parva-btn" style="float:right;" class="btn btn-primary my-2">
+                                <a href="/{{next_page_url}}" id="next-parva-btn" style="float:right;" class="btn btn-warning my-2">
                                 {% else %}
-                                <a href="/" style="float:right;" id="next-parva-btn" class="btn btn-primary my-2 disabled">
+                                <a href="/" style="float:right;" id="next-parva-btn" class="btn btn-warning my-2 disabled">
                                 {% endif %}
                                 <span class="fa fa-xl fa-arrow-right"></span>
                                 </a>

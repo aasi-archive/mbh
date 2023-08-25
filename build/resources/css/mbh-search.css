@@ -1,52 +1,93 @@
+@font-face 
+{
+  font-family: Futura;
+  src: url("/resources/Futura.ttf") format("truetype");
+}
+
+html {
+    height: 100%;
+}
+
 body {
     padding-top: 3%;
     padding-bottom: 3%;
-    font-size: 1.25em;
     background-color: rgb(255, 249, 240);
+    background-image: url('/resources/images/search-banner.jpg');
+    background-repeat: no-repeat;
+    font-family: 'Verdana';
 }
 
-.query_match
-{
-    background-color: yellow;
+.aasi-logo {
+    position: absolute;
+    top: 3%;
+    left: 2%;
+    filter: drop-shadow(5px 5px 5px #222);
 }
 
-.styled-table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-
-.styled-table thead tr {
-    background-color: #0071db;
-    color: #ffffff;
-    text-align: left;
-}
-
-.styled-table th,
-.styled-table td {
-    padding: 12px 15px;
-}
-
-.styled-table tbody tr {
-    border-bottom: 1px solid #dddddd;
-}
-
-.styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
-
-.styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
-}
-
-.styled-table tbody tr.active-row {
+.image-credits {
+    position: absolute;
+    top: 95%;
+    left: 2%;
     font-weight: bold;
-    color: #009879;
+    font-size: 1.2em;
+    color: #fff;
+    text-shadow: 0px 0px 12px #000;
+}
+label {
+    color: #fff;
+    text-shadow: 0px 0px 5px #000;
 }
 
-.styled-table tbody tr:hover {
-    background-color: #aed1fc;
+.mbh-search {
+    /* From https://css.glass */
+    background: rgba(0, 0, 0, 0.37);
+    border-radius: 16px;
+    box-shadow: 0 4px 60px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11.1px);
+    -webkit-backdrop-filter: blur(11.1px);
+}
+
+.query_match {
+    background-color: rgb(255, 193, 7);
+    color: black;
+}
+
+#results {
+    max-height: 700px;
+    overflow: hidden;
+    overflow-y: auto;
+    color: #fff;
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+    #results {
+        max-height: 700px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    #results {
+        max-height: 600px;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #f1f1f1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
 }

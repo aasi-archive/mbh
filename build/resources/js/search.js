@@ -13,7 +13,7 @@ Contact site administrator if you see this message. Alternatively, you can host
 this whole website locally cloning the repo along with the search server.`
 
 spinner_html = `
-<div class="spinner-border text-success" role="status" id="search-spinner">
+<div class="spinner-border text-warning" role="status" id="search-spinner">
     <span class="sr-only">Loading...</span>
 </div>
 `
@@ -24,6 +24,23 @@ $(document).ready( () => {
         console.log(search_server);
     });
 });
+
+/* Function to append zeros */
+function number_to_string_fixed_length(n, length)
+{
+    var s = n.toString();
+    if(s.length >= length)
+        return s;
+    else
+    {
+        var zeros_to_add = length - s.length;
+        for(var i = 0; i < zeros_to_add; i++)
+        {
+            s = "0" + s;
+        }
+        return s;
+    }
+}
 
 function mbh_search(result_selector, query_selector)
 {
@@ -60,19 +77,16 @@ function mbh_search(result_selector, query_selector)
                 return;
             }
 
-            var result_content = "<table class=\"table styled-table\">";
-            result_content += "<thead><tr><th>Parva/Section</th><th>Match</th></tr></thead><tbody>"
+            var result_content = "";
             for(const key in json)
             {
                 parva_section = key.split(":");
                 result_url = "/" + parva_section[0] + "/" + parva_section[1] + ".html";
-                result_content += "<tr>";
-                result_content += "<td><a href=\"" + result_url + "\">" + key + "</a></td>";
-                result_content += "<td>" + json[key]["surrounding"] + "</td>";
-                result_content += "</tr>";
+                result_content += `<b>${number_to_string_fixed_length(parva_section[0], 2)}:${number_to_string_fixed_length(parva_section[1], 3)}</b>&nbsp;`;
+                result_content += `<a href="${result_url}" class="btn btn-primary-outline text-white"><span class="fa fa-external-link"></span></a>&nbsp;&nbsp;&nbsp;&nbsp;`;
+                result_content += `${json[key]["surrounding"]}<br>`;
             }
-            result_content += "</tbody></table>"
-            $(global_result_selector).html(result_content)
+            $(global_result_selector).html(result_content);
         }
     };
 
