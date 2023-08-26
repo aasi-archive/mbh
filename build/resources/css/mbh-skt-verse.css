@@ -36,7 +36,8 @@ body {
   }
 }
 
-.sidebar-button {
+.sidebar-button 
+{
   position: fixed;
   top: 50%;
   left: 0;
@@ -44,7 +45,18 @@ body {
   z-index: 1000;
 }
 
-.sidebar-button:hover {
+.sidebar-button-right
+{
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: rotate(-90deg);
+  z-index: 1000;
+}
+
+.sidebar-button
+.sidebar-button-right:hover 
+{
   cursor: pointer;
   filter: brightness(75%);
 }

@@ -18,7 +18,7 @@ with open('search_index.json', 'r') as f:
     search_index = json.loads(f.read())
     f.close()
 
-@app.route("/api/search", methods=['POST'])
+@app.route("/api/mbh/search", methods=['POST'])
 @cross_origin()
 def search_result():
     query = request.json

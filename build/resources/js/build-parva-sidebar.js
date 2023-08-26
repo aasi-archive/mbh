@@ -1,4 +1,50 @@
-sections_per_parva = { 1: 236,
+parva_english_titles = {
+    0: "Mahabharata",
+    1: "The Beginning",
+    2: "The Assembly Hall",
+    3: "The Forest",
+    4: "Incognito",
+    5: "Reconciliation",
+    6: "Bhishma",
+    7: "Drona",
+    8: "Karna",
+    9: "Shalya",
+    10: "The Sleeping Warriors",
+    11: "The Wailing Women",
+    12: "Peace",
+    13: "Instructions",
+    14: "The Horse Sacrifice",
+    15: "Hermitage",
+    16: "The Curse",
+    17: "The Great Journey",
+    18: "The Ascent"
+}
+
+parva_sanskrit_titles = {
+    0: "महाभारतम्",
+    1: "आदिपर्व",
+    2: "सभापर्व",
+    3: "वनपर्व", 
+    4: "विराटपर्व", 
+    5: "उद्योगपर्व",
+    6: "भीष्मपर्व", 
+    7: "द्रोणपर्व", 
+    8: "कर्णपर्व", 
+    9: "शल्यपर्व", 
+    10: "सौप्तिकपर्व", 
+    11: "स्त्रीपर्व", 
+    12: "शान्तिपर्व", 
+    13: "अनुशासनपर्व", 
+    14: "अश्वमेधिकपर्व",  
+    15: "आश्रंवासिकपर्व", 
+    16: "मौसलपर्व", 
+    17: "महाप्रस्थानिक पर्व", 
+    18: "स्वर्गारोहण पर्व"
+};
+
+
+sections_per_parva = { 
+    1: 236,
     2: 80,
     3: 313,
     4: 72,
@@ -64,6 +110,40 @@ function n2HIn(n)
     return result;
 }
 
+function generate_mahabharata_navigator(language, current_parva)
+{
+    mahabharata_navigator = `
+    <img src="/resources/images/sidebar.png" class="sidebar-button-right" type="button" data-bs-toggle="offcanvas"
+    data-bs-target="#mahabharata_offcanvas" aria-controls="mahabharata_offcanvas">
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="mahabharata_offcanvas" aria-labelledby="mahabharata_offcanvas_label">
+
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="mahabharata_offcanvas_label">${language[0]}</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <div class="offcanvas-body shadow-lg" id="mahabharata-index">
+    </div>
+    `;
+    /* Add the Mahabahrata navigator */
+    $('body').append(mahabharata_navigator);
+
+    /* Add the book links in the MBh navigator */
+    var mahabharata_navigator_list = `<div class="list-group">`;
+    for(var i = 1; i <= 18; i++)
+    {
+        var active = "";
+        if(i == current_parva)
+        {
+            active = "active";
+        }
+        mahabharata_navigator_list += `<a class="list-group-item ${active}" href="/${i}/1.html">${language[0] == 'Mahabharata' ? i.toString() : n2HIn(i)}. ${language[i]}</a>`;
+    }
+    mahabharata_navigator_list += "</div>";
+    $('#mahabharata-index').html(mahabharata_navigator_list);
+}
+
 function enable_arrow_navigation()
 {
     /* Add event listener for left and right buttons */
@@ -100,6 +180,7 @@ function build_parva_sidebar_sanskrit()
     }
     content += "</div>";
     $("#parva-index").html(content);
+    generate_mahabharata_navigator(parva_sanskrit_titles, current_parva);
     enable_arrow_navigation();
 }
 
@@ -120,10 +201,11 @@ function build_parva_sidebar()
             active = "active";
         }
 
-        content += `<a class="list-group-item ${active}" href="/${current_parva}/${i}.html">Section ${i}</a></li>`
+        content += `<a class="list-group-item ${active}" href="/${current_parva}/${i}.html">Section ${i}</a>`
     }
     content += "</div>";
     $("#parva-index").html(content);
+    generate_mahabharata_navigator(parva_english_titles, current_parva)
     enable_arrow_navigation();
 }
 
