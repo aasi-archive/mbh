@@ -1,0 +1,32 @@
+body {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    background-color: rgb(255, 249, 240);
+}
+
+.sidebar-button {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: rotate(90deg);
+    z-index: 1000;
+}
+
+.sidebar-button-right {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: rotate(-90deg);
+    z-index: 1000;
+}
+
+.sidebar-button .sidebar-button-right:hover {
+    cursor: pointer;
+    filter: brightness(75%);
+}
+
+.zoom-button {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+}

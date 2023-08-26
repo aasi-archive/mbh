@@ -1,32 +1,23 @@
-@font-face 
-{
+@import url('/resources/css/verse-common.css');
+
+@font-face {
   font-family: Andada;
   src: url("/resources/Andada.otf") format("opentype");
 }
 
-@font-face 
-{
+@font-face {
   font-family: Andada;
   font-weight: bold;
   src: url("/resources/Andada-Bold.otf") format("opentype");
 }
 
-@font-face 
-{
+@font-face {
   font-family: Andada;
   font-style: italic;
   src: url("/resources/Andada-Italic.otf") format("opentype");
 }
 
-body 
-{
-  padding-top: 3%;
-  padding-bottom: 3%;
-  background-color: rgb(255, 249, 240);
-}
-
-.mbh-content 
-{
+.mbh-content {
   font-family: 'Andada', serif;
   font-size: 1.8em;
   margin-left: 5%;
@@ -34,55 +25,25 @@ body
 
 /* Tablet */
 @media (min-width: 768px) and (max-width: 991px) {
-  .mbh-content 
-  {
+  .mbh-content {
     font-size: 0.8em;
   }
 }
 
 /* Mobile */
-@media (max-width: 767px) 
-{
-  .mbh-content 
-  {
+@media (max-width: 767px) {
+  .mbh-content {
     font-size: 0.3em;
     margin-left: 0%;
   }
 }
 
-.sidebar-button 
-{
-  position: fixed;
-  top: 50%;
-  left: 0;
-  transform: rotate(90deg);
-  z-index: 1000;
-}
-
-.sidebar-button-right
-{
-  position: fixed;
-  top: 50%;
-  right: 0;
-  transform: rotate(-90deg);
-  z-index: 1000;
-}
-
-.sidebar-button
-.sidebar-button-right:hover 
-{
-  cursor: pointer;
-  filter: brightness(75%);
-}
-
-.footnote-tooltip 
-{
+.footnote-tooltip {
   position: relative;
   display: inline-block;
 }
 
-.footnote-tooltip .footnote-tooltip-text 
-{
+.footnote-tooltip .footnote-tooltip-text {
   visibility: hidden;
   width: 400px;
   background-color: #ffffca;
@@ -102,8 +63,7 @@ body
   filter: drop-shadow(0px 0px 5px #aaa)
 }
 
-.footnote-tooltip .footnote-tooltip-text::after 
-{
+.footnote-tooltip .footnote-tooltip-text::after {
   content: "";
   position: absolute;
   top: 100%;
@@ -114,8 +74,7 @@ body
   border-color: #ffffca transparent transparent transparent;
 }
 
-.footnote-tooltip:hover .footnote-tooltip-text 
-{
+.footnote-tooltip:hover .footnote-tooltip-text {
   visibility: visible;
   opacity: 0.95;
 }

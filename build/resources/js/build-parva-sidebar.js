@@ -110,6 +110,29 @@ function n2HIn(n)
     return result;
 }
 
+function increase_font_size(id, increaseFactor)
+{
+    txt = document.getElementsByClassName(id)[0];
+    style = window.getComputedStyle(txt, null).getPropertyValue('font-size');
+    currentSize = parseFloat(style);
+    txt.style.fontSize = (currentSize*increaseFactor) + 'px';
+}
+
+function add_font_zoom_buttons()
+{
+    zoom_buttons = `<div class="zoom-button">
+    <button class="btn btn-warning" onClick="increase_font_size('mbh-content', 1.1)">
+    <span class="fa fa-lg fa-search-plus px-2"></span>
+    </button>
+
+    <button class="btn btn-warning" onClick="increase_font_size('mbh-content', 0.9)">
+    <span class="fa fa-lg fa-search-minus px-2"></span>
+    </button>
+    </div>`;
+
+    $('body').append(zoom_buttons);
+}
+
 function generate_mahabharata_navigator(language, current_parva, link_prefix)
 {
     mahabharata_navigator = `
@@ -144,7 +167,7 @@ function generate_mahabharata_navigator(language, current_parva, link_prefix)
     $('#mahabharata-index').html(mahabharata_navigator_list);
 }
 
-function enable_arrow_navigation()
+function finish_sidebar()
 {
     /* Add event listener for left and right buttons */
     document.addEventListener('keydown', (e) => {
@@ -157,6 +180,7 @@ function enable_arrow_navigation()
             window.location.href = $("#next-parva-btn").attr('href');
         }
     });
+    add_font_zoom_buttons();
 }
 
 function build_parva_sidebar_sanskrit()
@@ -181,7 +205,7 @@ function build_parva_sidebar_sanskrit()
     content += "</div>";
     $("#parva-index").html(content);
     generate_mahabharata_navigator(parva_sanskrit_titles, current_parva, '/sanskrit');
-    enable_arrow_navigation();
+    finish_sidebar();
 }
 
 function build_parva_sidebar()
@@ -206,6 +230,6 @@ function build_parva_sidebar()
     content += "</div>";
     $("#parva-index").html(content);
     generate_mahabharata_navigator(parva_english_titles, current_parva, '')
-    enable_arrow_navigation();
+    finish_sidebar();
 }
 
