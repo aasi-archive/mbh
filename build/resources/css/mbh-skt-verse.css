@@ -1,0 +1,50 @@
+@font-face {
+  font-family: Eczar;
+  src: url("/resources/Eczar-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: Eczar;
+  font-weight: bold;
+  src: url("/resources/Eczar-Bold.ttf") format("truetype");
+}
+
+body {
+  padding-top: 3%;
+  padding-bottom: 3%;
+  background-color: rgb(255, 249, 240);
+}
+
+.mbh-skt-header {
+  text-align: center;
+}
+
+.mbh-skt-verse-index {
+  color: gray;
+}
+
+.mbh-skt-verse {
+  font-family: Eczar;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+  .mbh-content {
+    font-size: 0.8em;
+  }
+}
+
+.sidebar-button {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: rotate(90deg);
+  z-index: 1000;
+}
+
+.sidebar-button:hover {
+  cursor: pointer;
+  filter: brightness(75%);
+}
