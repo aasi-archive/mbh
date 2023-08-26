@@ -110,7 +110,7 @@ function n2HIn(n)
     return result;
 }
 
-function generate_mahabharata_navigator(language, current_parva)
+function generate_mahabharata_navigator(language, current_parva, link_prefix)
 {
     mahabharata_navigator = `
     <img src="/resources/images/sidebar.png" class="sidebar-button-right" type="button" data-bs-toggle="offcanvas"
@@ -138,7 +138,7 @@ function generate_mahabharata_navigator(language, current_parva)
         {
             active = "active";
         }
-        mahabharata_navigator_list += `<a class="list-group-item ${active}" href="/${i}/1.html">${language[0] == 'Mahabharata' ? i.toString() : n2HIn(i)}. ${language[i]}</a>`;
+        mahabharata_navigator_list += `<a class="list-group-item ${active}" href="${link_prefix}/${i}/1.html">${language[0] == 'Mahabharata' ? i.toString() : n2HIn(i)}. ${language[i]}</a>`;
     }
     mahabharata_navigator_list += "</div>";
     $('#mahabharata-index').html(mahabharata_navigator_list);
@@ -180,7 +180,7 @@ function build_parva_sidebar_sanskrit()
     }
     content += "</div>";
     $("#parva-index").html(content);
-    generate_mahabharata_navigator(parva_sanskrit_titles, current_parva);
+    generate_mahabharata_navigator(parva_sanskrit_titles, current_parva, '/sanskrit');
     enable_arrow_navigation();
 }
 
@@ -205,7 +205,7 @@ function build_parva_sidebar()
     }
     content += "</div>";
     $("#parva-index").html(content);
-    generate_mahabharata_navigator(parva_english_titles, current_parva)
+    generate_mahabharata_navigator(parva_english_titles, current_parva, '')
     enable_arrow_navigation();
 }
 
