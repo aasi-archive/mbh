@@ -1,3 +1,4 @@
 {
-    "search_server": "http://localho.st:5000/api/search"
+    "search_server": "http://localho.st:5000/api/search",
+    "translate_server": "http://localho.st:5000/api/translate"
 }
