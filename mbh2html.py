@@ -103,7 +103,6 @@ def sanitize_to_HTML(parva, content):
     content = content.replace("--", "&#8212;")
 
     # Replace the [NUMBER] with footnote
-    replacement = r'footnote: \1'
     content = re.sub(r'\[(\d+)\]', lambda match: f'<span class="footnote-tooltip" style="color:rgb(255,193,7);"><sup><i class="fa fa-info-circle"></i></sup><span class="footnote-tooltip-text">{footnote_index[parva][int(match.group(1))]}</span></span>', content)
     return content
 

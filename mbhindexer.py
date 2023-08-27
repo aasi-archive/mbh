@@ -6,9 +6,10 @@ from bs4 import BeautifulSoup
 import math
 import json
 
-SEARCH_INDEX_JSON = 'search_index.json'
-INDEX_ROOT_DIR = '..\\build\\'
-DIV_TO_INDEX = ['mbh_content']
+SEARCH_INDEX_JSON = 'mbh.json'
+INDEX_ROOT_DIR = '.\\build\\'
+DIV_TO_INDEX = ['mbh-content']
+IGNORE_DIR = ['.\\build\\sanskrit']
 EXTENSIONS = ['.html']
 SEARCH_INDEX = {}
 
@@ -29,7 +30,7 @@ def GetAllItemsInDirectory(path):
     diritem_array = []
     for item in items:
         item_path = os.path.join(path, item)
-        if(os.path.isdir(item_path)):
+        if(os.path.isdir(item_path) and item_path not in IGNORE_DIR):
             diritem_array += GetAllItemsInDirectory(item_path)
         else:
             for extension in EXTENSIONS:
@@ -58,7 +59,7 @@ def AddToSearchIndex(file, content):
 files_to_index = GetAllItemsInDirectory(INDEX_ROOT_DIR)
 D = len(files_to_index)
 for file in files_to_index:
-    with open(file, 'r') as fp:
+    with open(file, 'r', encoding='utf-8') as fp:
         soup = BeautifulSoup(fp, 'html.parser')
         content = soup.find(id='to_index')
         print("Index: ", file)
@@ -66,7 +67,7 @@ for file in files_to_index:
             AddToSearchIndex(file, content.get_text(separator = '\n', strip = True))
 
 print("Completed indexing for given data.")
-print("Writing to search_index.json")
+print("Writing to mbh.json")
 
-with open(SEARCH_INDEX_JSON, "w") as tf_file:
+with open(SEARCH_INDEX_JSON, "w", encoding='utf-8') as tf_file:
     tf_file.write(json.dumps(SEARCH_INDEX, separators=(',', ':')))

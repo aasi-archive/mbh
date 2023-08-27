@@ -24,18 +24,13 @@ git clone https://github.com/aasi-archive/mbh
 ```bash
 python ./mbh2html.py
 ```
-3. Build the search index (this will take a while)
+3. Build the Sanskrit parts 
 ```bash
-cd search
-python mbhindexer.py 
+python ./mbh2html-skt.py 
 ```
-4. Launch the search index (Flask starts on localhost:5000)
+4. Launch the static website
 ```bash
-python mbhsearch.py
-```
-5. Launch the static website
-```bash
-cd ../build
+cd build
 python -m http.server 8000
 ```
 
@@ -44,5 +39,4 @@ python -m http.server 8000
 - Book 7.54
 - Book 7.55
 - Book 7.189
-
 - Book 12.364
