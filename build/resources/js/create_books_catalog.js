@@ -1,3 +1,6 @@
+/* 
+    This creates the books catalog on the index page.
+*/
 parva_titles = {
     1: "The Beginning",
     2: "The Assembly Hall",

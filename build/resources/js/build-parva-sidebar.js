@@ -1,3 +1,17 @@
+/*
+    - This code builds the sidebars of each Section/Chapter.
+    
+    - There are two sidebars, first is the Section/Chapter side bar
+    on the left allowing navigation between the sections of a parva.
+    
+    - The second is the right side bar allowing navigation between
+    parvas.
+    
+    - It also adds the functionality to use arrow keys to navigate
+    through the text.
+    
+    - It also adds the zoom in and zoom out buttons.
+*/
 parva_english_titles = {
     0: "Mahabharata",
     1: "The Beginning",
@@ -99,6 +113,7 @@ HI_numbers = {
     ".": "." 
 };
 
+/* Convert a number to a Devanagari/Hindi-number */
 function n2HIn(n)
 {
     var s = n.toString();
@@ -110,6 +125,7 @@ function n2HIn(n)
     return result;
 }
 
+/* Function for increasing font size. */
 function increase_font_size(id, increaseFactor)
 {
     txt = document.getElementsByClassName(id)[0];
@@ -118,6 +134,7 @@ function increase_font_size(id, increaseFactor)
     txt.style.fontSize = (currentSize*increaseFactor) + 'px';
 }
 
+/* Add the zoom buttons */
 function add_font_zoom_buttons()
 {
     zoom_buttons = `<div class="zoom-button">
@@ -133,6 +150,7 @@ function add_font_zoom_buttons()
     $('body').append(zoom_buttons);
 }
 
+/* Generate the Mahabharata navigator */
 function generate_mahabharata_navigator(language, current_parva, link_prefix)
 {
     mahabharata_navigator = `
@@ -167,6 +185,7 @@ function generate_mahabharata_navigator(language, current_parva, link_prefix)
     $('#mahabharata-index').html(mahabharata_navigator_list);
 }
 
+/* Add arrow navigation. */
 function finish_sidebar()
 {
     /* Add event listener for left and right buttons */
@@ -183,6 +202,7 @@ function finish_sidebar()
     add_font_zoom_buttons();
 }
 
+/* Called by the Sanskrit pages. */
 function build_parva_sidebar_sanskrit()
 {
     current_parva = $("#parva-index").data('parva-index');
@@ -208,6 +228,7 @@ function build_parva_sidebar_sanskrit()
     finish_sidebar();
 }
 
+/* Called by the English pages */
 function build_parva_sidebar()
 {
     current_parva = $("#parva-index").data('parva-index');

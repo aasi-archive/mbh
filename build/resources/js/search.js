@@ -1,3 +1,7 @@
+/* 
+    Code for the MBh search engine.
+*/
+
 search_server = null;
 global_result_selector = null
 query_error_string = `No matches found. Here could be the following reasons:
@@ -25,7 +29,7 @@ $(document).ready( () => {
     });
 });
 
-/* Function to append zeros */
+/* Function to append zeros to be used to make the parva:section numbers fixed length in the results. */
 function number_to_string_fixed_length(n, length)
 {
     var s = n.toString();
