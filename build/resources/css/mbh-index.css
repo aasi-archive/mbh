@@ -1,19 +1,37 @@
+@import url('/resources/css/theme.css');
+
 body 
 {
     padding-top: 3%;
     padding-bottom: 3%;
     font-size: 1.25em;
-    background-color: rgb(255, 249, 240);
+    background-color: var(--theme-color-bg);
+    color: var(--theme-color-text);
 }
 
 .card 
 {
-    transition: transform 0.1s ease;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--theme-color-bg-lighter);
+    color: var(--theme-color-text);
 }
 
-.card:hover 
-{
+.card-header, .card-footer {
+    background-color: var(--theme-color-bg-lightest);
+    color: var(--theme-color-text);
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
     transform: scale(1.1);
+    color: var(--theme-color-bg);
+    background-color: var(--theme-color-text);
+}
+
+.card:hover .card-header, .card:hover .card-footer
+{
+    color: var(--theme-color-bg);
+    background-color: var(--theme-color-text);
 }
 
 .small-text 

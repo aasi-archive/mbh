@@ -20,10 +20,22 @@
 }
 
 .mbh-skt-verse {
+  margin-top: 5%;
   font-family: Eczar;
   font-size: 1.8rem;
   text-align: center;
 }
 
+/* Tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+  .mbh-skt-verse {
+    margin-top: 10%;
+  }
+}
 
-
+/* Mobile */
+@media (max-width: 767px) {
+  .mbh-skt-verse {
+    margin-top: 20%;
+  }
+}

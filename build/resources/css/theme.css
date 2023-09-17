@@ -1,0 +1,9 @@
+:root {
+    --theme-color-text: rgb(255, 255, 255);
+    --theme-color-navbar: rgb(44, 44, 54);
+    --theme-color-bg: rgb(34, 34, 34);
+    --theme-color-bg-light: rgb(44, 44, 44);
+    --theme-color-bg-lighter: rgb(54, 54, 54);
+    --theme-color-bg-lightest: rgb(70, 70, 70);
+    --theme-color-primary: rgb(240, 193, 7);
+}
