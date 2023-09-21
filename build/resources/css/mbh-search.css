@@ -1,7 +1,12 @@
+@import url("/resources/css/theme.css");
 @font-face 
 {
   font-family: Futura;
   src: url("/resources/Futura.ttf") format("truetype");
+}
+
+html::-webkit-scrollbar {
+    display: none;
 }
 
 html {
@@ -11,83 +16,86 @@ html {
 body {
     padding-top: 3%;
     padding-bottom: 3%;
-    background-color: rgb(255, 249, 240);
-    background-image: url('/resources/images/search-banner.jpg');
-    background-repeat: no-repeat;
+    background-color: var(--theme-color-bg);
+    color: var(--theme-color-text);
     font-family: 'Verdana';
 }
 
-.aasi-logo {
-    position: absolute;
-    top: 3%;
-    left: 2%;
-    filter: drop-shadow(5px 5px 5px #222);
+.navbar {
+    color: var(--theme-color-text);
+    background-color: var(--theme-color-navbar);
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0%;
+    z-index: 1000;
+    font-family: Andada;
+    font-size: 1.8em;
 }
 
-.image-credits {
-    position: absolute;
-    top: 95%;
-    left: 2%;
-    font-weight: bold;
-    font-size: 1.2em;
-    color: #fff;
-    text-shadow: 0px 0px 12px #000;
-}
-label {
-    color: #fff;
-    text-shadow: 0px 0px 5px #000;
+.progess-bar-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1001;
 }
 
-.mbh-search {
-    /* From https://css.glass */
-    background: rgba(0, 0, 0, 0.37);
-    border-radius: 16px;
-    box-shadow: 0 4px 60px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(11.1px);
-    -webkit-backdrop-filter: blur(11.1px);
+.progress-container {
+    background-color: var(--theme-color-navbar);
+    height: 3px;
+    width: 100%;
 }
 
+.progress-bar {
+    background-color: var(--theme-color-primary);
+    height: 3px;
+    width: 0%;
+}
+
+.btn-nav {
+    color: var(--theme-color-text);
+}
+
+.btn-nav:hover {
+    color: var(--theme-color-primary);
+}
 .query_match {
     background-color: rgb(255, 193, 7);
     color: black;
 }
 
-#results {
-    max-height: 700px;
-    overflow: hidden;
-    overflow-y: auto;
-    color: #fff;
+.mbh-search {
+    margin-top: 5%;
 }
 
-/* Tablet */
-@media (min-width: 768px) and (max-width: 991px) {
-    #results {
-        max-height: 700px;
-    }
-}
-
-/* Mobile */
 @media (max-width: 767px) {
-    #results {
-        max-height: 600px;
+    .mbh-search {
+        margin-top: 30%;
     }
 }
 
-::-webkit-scrollbar {
-    width: 10px;
+.input-box {
+    background-color: var(--theme-color-bg-lightest);
+    color: var(--theme-color-text);
+    border-radius: 25px;
+    border: 0;
+    transition: all 0.3s ease-in-out;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-    background: none;
+#results {
+    color: var(--theme-color-text);
+    background-color: var(--theme-color-bg);
 }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #f1f1f1;
+.card {
+    background-color: var(--theme-color-bg-light);
+    color: var(--theme-color-text);
+    transition: all 0.3s ease-in-out;
+    border-radius: 25px;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #a1a1a1;
+.card:hover {
+    background-color: var(--theme-color-text);
+    color: var(--theme-color-bg-light);
+    transform: scale(1.1);
 }

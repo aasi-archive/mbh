@@ -44,3 +44,10 @@ body
 {
     border-radius: 2%;
 }
+
+.input-box {
+    background-color: var(--theme-color-bg-lightest);
+    color: var(--theme-color-text);
+    border-radius: 25px;
+    border: 0;
+}
