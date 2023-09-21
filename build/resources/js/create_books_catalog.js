@@ -34,7 +34,7 @@ parva_summaries = {
     9: "The last day of the battle, with Shalya as commander. Duryodhana is slain by Bhima.",
     10: "A disgruntled Ashwatthama plots an attack at night and kills many soldiers of the Pandava army.",
     11: "The women of the Kauravas and Pandavas lament their dead husbands and sons and curse Krishna.",
-    12: "Peace is achieved at Hastinapura and Yudhiṣṭhira is crowned King.",
+    12: "Peace is achieved at Hastinapura and Yudhiṣṭhira is crowned King. Sage Bharadwaja and Yudhisthira have a discourse on governance.",
     13: "The instructions given by Grandisre Bhishma to Yudhiṣṭhira before his death on the Bed of Arrows.",
     14: "The Horse Sacrifice is conducted by the newly crowned King. Arjuna conquers beyond.",
     15: "The eventual deaths of the Elders: Dhritrashtra, Gandhari, and Kunti in a forest fire while in their hermitage.",

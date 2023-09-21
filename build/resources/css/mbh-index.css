@@ -9,6 +9,9 @@ body
     color: var(--theme-color-text);
 }
 
+img {
+    border-radius: 25px;
+}
 .card 
 {
     transition: all 0.3s ease-in-out;
@@ -26,6 +29,7 @@ body
     transform: scale(1.1);
     color: var(--theme-color-bg);
     background-color: var(--theme-color-text);
+    cursor: pointer;
 }
 
 .card:hover .card-header, .card:hover .card-footer
